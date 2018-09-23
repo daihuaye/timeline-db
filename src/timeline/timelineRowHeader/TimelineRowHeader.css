@@ -1,0 +1,6 @@
+.timeline-row-header {
+    min-height: 5rem;
+    width: 8rem;
+    max-width: 8rem;
+    background-color: red;
+}

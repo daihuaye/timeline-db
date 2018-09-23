@@ -1,0 +1,24 @@
+.timeline-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.timeline-header-container {
+    width: 100%;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.timeline-content-row-header {
+    overflow: hidden;
+}
+
+.timeline-content {
+    display: flex;
+}
+
+.timeline-content-row-body {
+    flex: 1;
+    overflow: auto;    
+}
+

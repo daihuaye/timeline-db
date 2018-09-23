@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 
 class TimelineHeader extends Component {
     render() {
-        return <span>Hello World, I am TimelineHeader</span>;
+        return (
+            <div style={{ width: this.props.offsetWidth }}>
+                <div>Hello world</div>
+            </div>
+        );
     }
 }
 

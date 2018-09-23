@@ -6,7 +6,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Timeline></Timeline>
+        <h1>Timeline :)</h1>
+        <Timeline />
       </div>
     );
   }
