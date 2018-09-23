@@ -7,6 +7,7 @@
     width: 100%;
     overflow: hidden;
     flex-shrink: 0;
+    background-color: blue;
 }
 
 .timeline-content-row-header {

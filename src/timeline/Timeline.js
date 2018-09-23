@@ -16,9 +16,13 @@ class Timeline extends Component {
         this.state = {
             startDate: moment().subtract(1, 'months'),
             endDate: moment().add(10, 'months'),
-            duration: DURATION.WEEK
+            duration: DURATION.WEEK,
+            contentScrollTop: 0,
+            contentScrollLeft: 0
         }
         this.durationManager = new WeekDurationManager();
+        this.onScrollHandler = this.onScroll.bind(this);
+        this.frameId = null;
     }
 
     render() {
@@ -30,18 +34,36 @@ class Timeline extends Component {
         return (
             <div className="timeline-container">
                 <div className="timeline-header-container">
-                    <TimelineHeader offsetWidth={ offsetWidth } />
+                    <div style={{transform: `translateX(-${this.state.contentScrollLeft}px)`}}>
+                        <TimelineHeader offsetWidth={ offsetWidth } />
+                    </div>
                 </div>
                 <div className="timeline-content">
                     <div className="timeline-content-row-header">
-                        { _.map(_.repeat('*', 8).split(''), () => <TimelineRowHeader />) }
+                        <div style={{transform: `translateY(-${this.state.contentScrollTop}px)`}}>
+                            { _.map(_.repeat('*', 15).split(''), (val, idx) => <TimelineRowHeader key={idx} />) }
+                        </div>
                     </div>
-                    <div className="timeline-content-row-body">
-                        { _.map(_.repeat('*', 8).split(''), () => <TimelineRowBody offsetWidth={ offsetWidth } />) } 
+                    <div className="timeline-content-row-body" onScroll={ this.onScrollHandler }>
+                        { _.map(_.repeat('*', 15).split(''), (val, idx) => <TimelineRowBody offsetWidth={ offsetWidth } key={idx} />) } 
                     </div>
                 </div>
             </div>
         );
+    }
+
+    onScroll(event) {
+        if (!this.frameId) {
+            const top = event.target.scrollTop;
+            const left = event.target.scrollLeft;
+            this.frameId = window.requestAnimationFrame((event) => {
+                this.frameId = null;
+                this.setState({
+                    contentScrollTop: top,
+                    contentScrollLeft: left
+                });
+            });
+        }
     }
 }
 
