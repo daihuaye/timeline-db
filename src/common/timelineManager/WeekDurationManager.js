@@ -8,6 +8,10 @@ class WeekDurationManager extends BaseTimelineManager {
   getDuration() {
     return "week";
   }
+
+  getDisplayDate(date) {
+    return date.format("MMM D");
+  }
 }
 
 export default WeekDurationManager;

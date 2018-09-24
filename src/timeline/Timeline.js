@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import moment from "moment";
 import _ from "lodash";
+
 import TimelineHeader from "./timelineHeader/TimelineHeader";
 import TimelineCellHeader from "./timelineCellHeader/TimelineCellHeader";
 import TimelineCellBody from "./timelineCellBody/TimelineCellBody";
@@ -11,8 +12,8 @@ import WeekDurationManager from "../common/timelineManager/WeekDurationManager";
 import "./Timeline.css";
 
 class Timeline extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       startDate: moment().subtract(1, "months"),
       endDate: moment().add(10, "months"),
@@ -24,7 +25,7 @@ class Timeline extends Component {
     this.onScrollHandler = this.onScroll.bind(this);
     this.frameId = null;
     this.timelineContainerRef = React.createRef();
-    this.getContainerCurrentWidth = this.getContainerWidth.bind(this);
+    this.getContainerWidth = this.getContainerWidth.bind(this);
   }
 
   render() {
@@ -40,7 +41,7 @@ class Timeline extends Component {
             manager={this.durationManager}
             offsetWidth={offsetWidth}
             startDate={this.state.startDate}
-            viewportWidth={this.getContainerCurrentWidth}
+            getViewportWidth={this.getContainerWidth}
             scrollLeft={this.state.contentScrollLeft}
           />
         </div>
@@ -70,7 +71,10 @@ class Timeline extends Component {
   }
 
   getContainerWidth() {
-    return this.timelineContainerRef.current.offsetWidth;
+    return (
+      this.timelineContainerRef.current &&
+      this.timelineContainerRef.current.offsetWidth
+    );
   }
 
   onScroll(event) {

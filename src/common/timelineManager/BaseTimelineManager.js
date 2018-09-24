@@ -11,6 +11,10 @@ class BaseTimelineManager {
     return 7;
   }
 
+  getPixelsPerBox() {
+    return PIXELS_PER_BOX;
+  }
+
   getPixelsPerDay() {
     return PIXELS_PER_BOX / this.getDayWidth();
   }
