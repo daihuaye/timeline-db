@@ -10,6 +10,10 @@
   background-color: blue;
 }
 
+.timeline-content-cell-header-wrapper {
+  will-change: transform;
+}
+
 .timeline-content-cell-header {
   overflow: hidden;
   flex-shrink: 0;
@@ -23,8 +27,4 @@
 .timeline-content-cell-body {
   flex: 1;
   overflow: auto;
-}
-
-.timeline-content-cell-header-wrapper {
-  will-change: transform;
 }
