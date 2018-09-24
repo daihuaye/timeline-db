@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import _ from 'lodash';
 import TimelineHeader from './timelineHeader/TimelineHeader';
-import TimelineRowHeader from './timelineRowHeader/TimelineRowHeader';
-import TimelineRowBody from './timelineRowBody/TimelineRowBody';
+import TimelineCellHeader from './timelineCellHeader/TimelineCellHeader';
+import TimelineCellBody from './timelineCellBody/TimelineCellBody';
 import { DURATION } from '../common/constants';
 
 import WeekDurationManager from '../common/timelineManager/WeekDurationManager';
@@ -39,13 +39,13 @@ class Timeline extends Component {
                     </div>
                 </div>
                 <div className="timeline-content">
-                    <div className="timeline-content-row-header">
+                    <div className="timeline-content-cell-header">
                         <div style={{transform: `translateY(-${this.state.contentScrollTop}px)`}}>
-                            { _.map(_.repeat('*', 15).split(''), (val, idx) => <TimelineRowHeader key={idx} />) }
+                            { _.map(_.repeat('*', 15).split(''), (val, idx) => <TimelineCellHeader key={idx} />) }
                         </div>
                     </div>
-                    <div className="timeline-content-row-body" onScroll={ this.onScrollHandler }>
-                        { _.map(_.repeat('*', 15).split(''), (val, idx) => <TimelineRowBody offsetWidth={ offsetWidth } key={idx} />) } 
+                    <div className="timeline-content-cell-body" onScroll={ this.onScrollHandler }>
+                        { _.map(_.repeat('*', 15).split(''), (val, idx) => <TimelineCellBody offsetWidth={ offsetWidth } key={idx} />) } 
                     </div>
                 </div>
             </div>
