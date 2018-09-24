@@ -19,13 +19,24 @@ class Timeline extends Component {
       endDate: moment().add(10, "months"),
       duration: DURATION.WEEK,
       contentScrollTop: 0,
-      contentScrollLeft: 0
+      contentScrollLeft: 0,
+      cellContents: [],
+      cellHeaders: []
     };
     this.durationManager = new WeekDurationManager();
     this.onScrollHandler = this.onScroll.bind(this);
     this.frameId = null;
     this.timelineContainerRef = React.createRef();
     this.getContainerWidth = this.getContainerWidth.bind(this);
+  }
+
+  componentWillMount() {
+    this.props.serviceApi.getData().then(({ cellHeaders, cellContents }) => {
+      this.setState({
+        cellHeaders,
+        cellContents
+      });
+    });
   }
 
   render() {
@@ -52,7 +63,7 @@ class Timeline extends Component {
                 transform: `translateY(-${this.state.contentScrollTop}px)`
               }}
             >
-              {_.map(_.repeat("*", 15).split(""), (val, idx) => (
+              {_.map(this.state.cellHeaders, (val, idx) => (
                 <TimelineCellHeader key={idx} />
               ))}
             </div>
@@ -61,7 +72,7 @@ class Timeline extends Component {
             className="timeline-content-cell-body"
             onScroll={this.onScrollHandler}
           >
-            {_.map(_.repeat("*", 15).split(""), (val, idx) => (
+            {_.map(this.state.cellHeaders, (val, idx) => (
               <TimelineCellBody offsetWidth={offsetWidth} key={idx} />
             ))}
           </div>
