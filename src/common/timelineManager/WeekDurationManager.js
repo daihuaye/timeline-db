@@ -1,13 +1,13 @@
-import BaseTimelineManager from './BaseTimelineManager';
+import BaseTimelineManager from "./BaseTimelineManager";
 
 class WeekDurationManager extends BaseTimelineManager {
-    getDayWidth() {
-        return 7;
-    }
+  getDayWidth() {
+    return 7;
+  }
 
-    getDuration() {
-        return 'week';
-    }
+  getDuration() {
+    return "week";
+  }
 }
 
 export default WeekDurationManager;

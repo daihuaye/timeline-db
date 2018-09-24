@@ -1,13 +1,13 @@
-import BaseTimelineManager from './BaseTimelineManager';
+import BaseTimelineManager from "./BaseTimelineManager";
 
 class TwoWeekDurationManager extends BaseTimelineManager {
-    getDayWidth() {
-        return 14;
-    }
+  getDayWidth() {
+    return 14;
+  }
 
-    getDuration() {
-        return 'week';
-    }
+  getDuration() {
+    return "week";
+  }
 }
 
 export default TwoWeekDurationManager;

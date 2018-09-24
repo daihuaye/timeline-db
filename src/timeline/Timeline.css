@@ -1,25 +1,24 @@
 .timeline-container {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .timeline-header-container {
-    width: 100%;
-    overflow: hidden;
-    flex-shrink: 0;
-    background-color: blue;
+  width: 100%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background-color: blue;
 }
 
 .timeline-content-cell-header {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .timeline-content {
-    display: flex;
+  display: flex;
 }
 
 .timeline-content-cell-body {
-    flex: 1;
-    overflow: auto;    
+  flex: 1;
+  overflow: auto;
 }
-

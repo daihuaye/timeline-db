@@ -1,7 +1,7 @@
 .timeline-cell-header {
-    min-height: 5rem;
-    width: 12rem;
-    max-width: 12rem;
-    background-color: red;
-    border-bottom: 1px solid;
+  min-height: 5rem;
+  width: 12rem;
+  max-width: 12rem;
+  background-color: red;
+  border-bottom: 1px solid;
 }
