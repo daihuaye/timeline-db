@@ -44,8 +44,6 @@ class TimelineHeader extends Component {
       left: manager.getOffsetBetween(startDate, startDateOfWeek)
     });
 
-    console.log(endDate.format());
-
     while (_.last(displayDates).value.isBefore(endDate)) {
       const last = _.last(displayDates);
       displayDates.push({

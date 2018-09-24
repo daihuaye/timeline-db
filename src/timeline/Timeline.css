@@ -12,10 +12,12 @@
 
 .timeline-content-cell-header {
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .timeline-content {
   display: flex;
+  overflow: auto;
 }
 
 .timeline-content-cell-body {
