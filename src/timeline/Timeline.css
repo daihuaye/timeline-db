@@ -24,3 +24,7 @@
   flex: 1;
   overflow: auto;
 }
+
+.timeline-content-cell-header-wrapper {
+  will-change: transform;
+}

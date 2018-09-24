@@ -1,3 +1,4 @@
 .timeline-header {
   display: flex;
+  will-change: transform;
 }

@@ -59,6 +59,7 @@ class Timeline extends Component {
         <div className="timeline-content">
           <div className="timeline-content-cell-header">
             <div
+              className="timeline-content-cell-header-wrapper"
               style={{
                 transform: `translateY(-${this.state.contentScrollTop}px)`
               }}
@@ -89,9 +90,9 @@ class Timeline extends Component {
   }
 
   onScroll(event) {
+    const top = event.target.scrollTop;
+    const left = event.target.scrollLeft;
     if (!this.frameId) {
-      const top = event.target.scrollTop;
-      const left = event.target.scrollLeft;
       this.frameId = window.requestAnimationFrame(event => {
         this.frameId = null;
         this.setState({
