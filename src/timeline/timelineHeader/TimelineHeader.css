@@ -1,4 +1,9 @@
 .timeline-header {
   display: flex;
   will-change: transform;
+  background-color: blue;
+}
+
+.timeline-custom-date-header {
+  min-height: 3rem;
 }

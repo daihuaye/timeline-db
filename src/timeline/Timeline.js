@@ -3,8 +3,7 @@ import moment from "moment";
 import _ from "lodash";
 
 import TimelineHeader from "./timelineHeader/TimelineHeader";
-import TimelineCellHeader from "./timelineCellHeader/TimelineCellHeader";
-import TimelineCellBody from "./timelineCellBody/TimelineCellBody";
+import TimelineCell from "./timelineCell/TimelineCell";
 import { DURATION } from "../common/constants";
 
 import WeekDurationManager from "../common/timelineManager/WeekDurationManager";
@@ -24,7 +23,7 @@ class Timeline extends Component {
       cellHeaders: []
     };
     this.durationManager = new WeekDurationManager();
-    this.onScrollHandler = this.onScroll.bind(this);
+    this.onScroll = this.onScroll.bind(this);
     this.frameId = null;
     this.timelineContainerRef = React.createRef();
     this.getContainerWidth = this.getContainerWidth.bind(this);
@@ -46,7 +45,11 @@ class Timeline extends Component {
       endDate
     );
     return (
-      <div className="timeline-container" ref={this.timelineContainerRef}>
+      <div
+        className="timeline-container"
+        ref={this.timelineContainerRef}
+        onScroll={this.onScroll}
+      >
         <div className="timeline-header-container">
           <TimelineHeader
             manager={this.durationManager}
@@ -56,27 +59,10 @@ class Timeline extends Component {
             scrollLeft={this.state.contentScrollLeft}
           />
         </div>
-        <div className="timeline-content">
-          <div className="timeline-content-cell-header">
-            <div
-              className="timeline-content-cell-header-wrapper"
-              style={{
-                transform: `translateY(-${this.state.contentScrollTop}px)`
-              }}
-            >
-              {_.map(this.state.cellHeaders, (val, idx) => (
-                <TimelineCellHeader key={idx} />
-              ))}
-            </div>
-          </div>
-          <div
-            className="timeline-content-cell-body"
-            onScroll={this.onScrollHandler}
-          >
-            {_.map(this.state.cellHeaders, (val, idx) => (
-              <TimelineCellBody offsetWidth={offsetWidth} key={idx} />
-            ))}
-          </div>
+        <div className="timeline-cell-container">
+          {_.map(this.state.cellHeaders, data => (
+            <TimelineCell key={data.id} offsetWidth={offsetWidth} />
+          ))}
         </div>
       </div>
     );

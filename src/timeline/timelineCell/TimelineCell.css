@@ -1,0 +1,4 @@
+.timeline-cell {
+  min-height: 5rem;
+  white-space: nowrap;
+}

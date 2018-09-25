@@ -2,8 +2,6 @@ import _ from "lodash";
 import moment from "moment";
 
 class FakeService {
-  constructor() {}
-
   getData() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {

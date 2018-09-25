@@ -16,15 +16,25 @@ class TimelineHeader extends Component {
       <div
         className="timeline-header"
         style={{
-          transform: `translateX(-${this.props.scrollLeft}px)`,
-          width: this.props.offsetWidth
+          width: this.props.offsetWidth,
+          position: "relative"
         }}
       >
-        {_.map(dates, (date, idx) => (
-          <div key={idx} style={{ transform: `translateX(${date.left}px)` }}>
-            {this.props.manager.getDisplayDate(date.value)}
-          </div>
-        ))}
+        <div className="timeline-custom-date-header" />
+        <div>
+          {_.map(dates, (date, idx) => (
+            <div
+              key={idx}
+              style={{
+                transform: `translateX(${date.left}px)`,
+                position: "absolute",
+                bottom: "1rem"
+              }}
+            >
+              {this.props.manager.getDisplayDate(date.value)}
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
@@ -35,7 +45,9 @@ class TimelineHeader extends Component {
 
     // get the date from scrollLeft
     const date = manager.getDateFromOffset(startDate, scrollLeft);
-    const startDateOfWeek = moment(date).startOf(manager.getDuration());
+    const startDateOfWeek = moment(date)
+      .startOf(manager.getDuration())
+      .add(manager.getDayWidth(), "days");
     const endDate = manager
       .getDateFromOffset(startDate, scrollLeft + getViewportWidth())
       .add(1, "months");

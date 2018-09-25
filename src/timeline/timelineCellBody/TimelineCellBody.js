@@ -6,7 +6,7 @@ class TimelineCellBody extends Component {
     return (
       <div
         className="timeline-cell-body"
-        style={{ width: this.props.offsetWidth }}
+        style={{ width: this.props.offsetWidth, ...this.props.style }}
       >
         TimelineCellBody
       </div>
